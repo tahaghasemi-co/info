@@ -3,186 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>طاها قاسمی | توسعه کسب‌وکار و رشد مبتنی بر داده</title>
-  <meta name="description" content="صفحه شخصی طاها قاسمی؛ متخصص رشد، تحلیل داده و توسعه کسب‌وکار">
+  <title>طاها قاسمی | Product Marketing & Growth</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --card-border: #334155;
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.7);
+      --card-hover: rgba(26, 36, 56, 0.85);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(56, 189, 248, 0.35);
       --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --text-sub: #94a3b8;
       --accent: #38bdf8;
-      --accent-hover: #0ea5e9;
-      --tag-bg: #0f172a;
-      --radius: 14px;
-      --transition: all 0.2s ease-in-out;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --purple: #818cf8;
+      --green: #34d399;
+      --orange: #f97316;
+      --orange-glow: rgba(249, 115, 22, 0.15);
+      --radius: 18px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif !important;
     }
 
     body {
-      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
       color: var(--text-main);
       line-height: 1.8;
-      padding: 3rem 1.25rem;
+      padding: 2.5rem 1.25rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: -10%;
+      left: 15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.06), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -10%;
+      right: 15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.06), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .container {
-      max-width: 720px;
+      max-width: 960px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    /* هدر و معرفی اولیه */
-    header {
-      margin-bottom: 3.5rem;
-      text-align: right;
-    }
-
-    .avatar-wrapper {
+    .badge-status {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 84px;
-      height: 84px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), #6366f1);
-      color: #0f172a;
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.3);
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-    }
-
-    .tagline {
-      font-size: 1.15rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 1.2rem;
-    }
-
-    .bio-lead {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-    }
-
-    /* کارت‌های بخش‌بندی */
-    section {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
+      gap: 0.6rem;
+      padding: 0.45rem 1rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--green);
+      font-weight: 600;
       margin-bottom: 2rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-main);
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--green);
+      animation: pulse 2s infinite;
     }
 
-    h2::before {
-      content: "";
-      display: inline-block;
-      width: 4px;
-      height: 18px;
-      background: var(--accent);
-      border-radius: 2px;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
-    p {
-      color: var(--text-muted);
-      font-size: 0.98rem;
+    /* بخش اول: هیرو و آمار */
+    .hero-section {
+      margin-bottom: 3.5rem;
     }
 
-    /* مهارت‌ها */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
-      margin-top: 1rem;
-    }
-
-    @media (min-width: 560px) {
-      .skills-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .skill-card {
-      background: var(--tag-bg);
-      border: 1px solid var(--card-border);
-      padding: 1.1rem;
-      border-radius: 10px;
-    }
-
-    .skill-title {
+    .hero-eyebrow {
+      color: var(--orange);
       font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 0.35rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
     }
 
-    .skill-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.6;
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
     }
 
-    /* راه‌های ارتباطی و دکمه‌ها */
-    .cta-container {
+    .hero-title span {
+      color: var(--orange);
+      text-shadow: 0 0 25px var(--orange-glow);
+    }
+
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--text-sub);
+      max-width: 780px;
+      margin-bottom: 2rem;
+      line-height: 1.85;
+    }
+
+    .cta-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.2rem;
+      gap: 1rem;
+      margin-bottom: 3rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.65rem 1.25rem;
-      border-radius: 8px;
-      font-size: 0.92rem;
-      font-weight: 600;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
       text-decoration: none;
-      transition: var(--transition);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
     }
 
     .btn-primary {
-      background-color: var(--accent);
-      color: #0f172a;
+      background: linear-gradient(135deg, var(--accent), #0284c7);
+      color: #090d16;
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.3);
     }
 
     .btn-primary:hover {
-      background-color: var(--accent-hover);
       transform: translateY(-2px);
+      box-shadow: 0 15px 30px -5px rgba(56, 189, 248, 0.45);
     }
 
     .btn-secondary {
-      background-color: var(--tag-bg);
+      background: rgba(255, 255, 255, 0.04);
       color: var(--text-main);
-      border: 1px solid var(--card-border);
+      border: 1px solid var(--border);
     }
 
     .btn-secondary:hover {
@@ -191,77 +180,832 @@
       transform: translateY(-2px);
     }
 
-    footer {
+    /* نوار آمار ۴ تایی */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      padding: 2rem;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    @media (min-width: 768px) {
+      .metrics-bar {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .metric-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .metric-label {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    /* تیترهای بخش‌ها */
+    .section-header {
+      margin-top: 4.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+    }
+
+    /* بخش دوم: WHAT I DO */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-accent);
+      background: var(--card-hover);
+      transform: translateY(-3px);
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      color: #fff;
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.65rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      color: var(--text-sub);
+    }
+
+    /* بخش سوم: شبیه‌ساز رشد و ROI */
+    .simulator-card {
+      background: linear-gradient(145deg, rgba(17, 24, 39, 0.85) 0%, rgba(30, 41, 59, 0.6) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      backdrop-filter: blur(14px);
+    }
+
+    .sim-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 840px) {
+      .sim-grid {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
+
+    .slider-box {
+      margin-bottom: 1.35rem;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.88rem;
+    }
+
+    .slider-title {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .slider-num {
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 6px;
+      background: #1e293b;
+      border-radius: 4px;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .sim-result-box {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
       text-align: center;
-      margin-top: 3.5rem;
+    }
+
+    .res-metric-label {
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: var(--text-sub);
+    }
+
+    .res-metric-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1.2;
+    }
+
+    .res-sub-value {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--purple);
+    }
+
+    /* بخش چهارم: تجارب و Load More */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .exp-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+    }
+
+    .exp-card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: var(--card-hover);
+    }
+
+    .exp-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-role {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .exp-company {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .exp-date {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+    }
+
+    .exp-achievements {
+      list-style-type: none;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .exp-achievements li {
+      position: relative;
+      padding-right: 1.35rem;
+      font-size: 0.92rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+    }
+
+    .exp-achievements li::before {
+      content: "✦";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    .hidden-exp {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .hidden-exp.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .load-more-btn-wrap {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    /* بخش پنجم: اطلاعات تماس و فرم درخواست */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr 1.25fr;
+      }
+    }
+
+    .info-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .contact-channel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .contact-channel span:first-child {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .contact-channel a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: color 0.2s;
+    }
+
+    .contact-channel a:hover {
+      color: #fff;
+    }
+
+    .form-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+      color: var(--text-main);
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 105px;
+    }
+
+    .form-success-msg {
+      display: none;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--green);
+      color: var(--green);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-sub);
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- هدر و هویت بصری -->
-    <header>
-      <div class="avatar-wrapper">ط‌ق</div>
-      <h1>طاها قاسمی</h1>
-      <div class="tagline">توسعه کسب‌وکار، تحلیل داده و استراتژی رشد (Growth)</div>
-      <p class="bio-lead">
-        تمرکز من بر استفاده از داده‌های رفتاری، تحلیل محصول و تفکر تحلیلی برای کشف گلوگاه‌های رشد و ساخت راهکارهای مقیاس‌پذیر در کسب‌وکارهای دیجیتال است.
-      </p>
-    </header>
+    
+    <!-- وضعیت فعالیت -->
+    <div class="badge-status">
+      <span class="pulse-dot"></span>
+      <span>در دسترس برای مشاوره رشد، تحلیل محصول و همکاری‌های استراتژیک</span>
+    </div>
 
-    <!-- درباره من -->
-    <section>
-      <h2>درباره من</h2>
-      <p>
-        مسیر حرفه‌ای من با مهندسی کامپیوتر آغاز شد و به تلفیق فناوری، بازاریابی و تصمیم‌گیری داده‌محور پیوند خورد. معتقدم داده‌ها وقتی ارزش دارند که به بینش کاربردی تبدیل شوند و مستقیم روی تجربه کاربر و خروجی کسب‌وکار اثر بگذارند. به سیستم‌های تحلیلی، مدل‌سازی قیف‌های بازاریابی و طراحی جریان‌های تعاملی تمیز و هدفمند علاقه‌مندم.
+    <!-- بخش اول: هیرو و معرفی -->
+    <section class="hero-section">
+      <div class="hero-eyebrow">Product Marketing & Growth</div>
+      <h1 class="hero-title">
+        من عاشق مسائلی هستم که هنوز <span>مبهم و حل‌نشده‌اند.</span>
+      </h1>
+      <p class="hero-lead">
+        تخصص من در اتصال <strong>استراتژی بازاریابی (GTM)</strong>، <strong>تحلیل رفتار کاربر</strong> و <strong>اقتصاد کسب‌وکار</strong> است؛ به‌خصوص زمانی که سؤالات تجاری هنوز شفاف نیستند و باید به یک سیستم اندازه‌پذیر و مقیاس‌پذیر تبدیل شوند.
       </p>
-    </section>
 
-    <!-- مهارت‌ها و حوزه‌های تخصصی -->
-    <section>
-      <h2>تخصص‌ها و نحوه ارزش‌آفرینی</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <div class="skill-title">تحلیل محصول و داده (Product Analytics)</div>
-          <div class="skill-desc">طراحی متریک‌ها، تحلیل کوهورت، ریتنشن و استخراج بینش از پایگاه‌داده با SQL و ابزارهای تحلیلی.</div>
+      <div class="cta-group">
+        <a href="#contact-section" class="btn btn-primary">درخواست گفت‌وگو و جلسه</a>
+        <a href="Taha Ghasemi.pdf" download class="btn btn-secondary">
+          <span>دانلود رزومه (PDF)</span>
+          <span style="font-size: 0.8rem;">↓</span>
+        </a>
+      </div>
+
+      <!-- نوار شاخص‌های کلیدی -->
+      <div class="metrics-bar">
+        <div class="metric-item">
+          <div class="metric-value">۲۰۷٪+</div>
+          <div class="metric-label">رشد درآمد با بهینه‌سازی قیف</div>
         </div>
-        <div class="skill-card">
-          <div class="skill-title">استراتژی رشد و تبدیل (Growth & Funnels)</div>
-          <div class="skill-desc">بهینه‌سازی قیف‌های ورودی تا فعال‌سازی (Activation)، تست فرضیات رشد و آزمون‌گری داده‌محور.</div>
+        <div class="metric-item">
+          <div class="metric-value">۶۷٪+</div>
+          <div class="metric-label">رشد سهم بازار ورتیکال هتل</div>
         </div>
-        <div class="skill-card">
-          <div class="skill-title">توسعه کسب‌وکار (Business Development)</div>
-          <div class="skill-desc">تحلیل فرصت‌های بازار، شناسایی نقاط اهرمی بیزینس و طراحی تعاملات ارزش‌افزا در بازار آنلاین.</div>
+        <div class="metric-item">
+          <div class="metric-value">۵۰+</div>
+          <div class="metric-label">شاخص عملکردی و دشبورد طراحی‌شده</div>
         </div>
-        <div class="skill-card">
-          <div class="skill-title">سیستم‌سازی ارتباط با مشتری (Lifecycle & CRM)</div>
-          <div class="skill-desc">سگمنتیشن کاربران، ساخت سناریوهای بازگشت به چرخه خرید و اتوماسیون تعاملات هدفمند.</div>
+        <div class="metric-item">
+          <div class="metric-value">۵+</div>
+          <div class="metric-label">سال سابقه هدایت رشد مبتنی بر دیتا</div>
         </div>
       </div>
     </section>
 
-    <!-- دعوت به اقدام و راه‌های تماس -->
+    <!-- بخش دوم: WHAT I DO (حوزه‌های ارزش‌آفرینی) -->
     <section>
-      <h2>ارتباط با من</h2>
-      <p>
-        اگر به دنبال همفکری پیرامون چالش‌های رشد محصول، تحلیل رفتارهای کاربردی مشتریان یا فرصت‌های همکاری هستید، خوشحال می‌شوم با من در تماس باشید:
-      </p>
-      <div class="cta-container">
-        <!-- آدرس‌های زیر را با لینک‌های واقعی خود جایگزین کنید -->
-        <a href="mailto:your-email@example.com" class="btn btn-primary">ارسال ایمیل</a>
-        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" class="btn btn-secondary">لینکدین</a>
-        <a href="https://t.me/your-id" target="_blank" rel="noopener" class="btn btn-secondary">تلگرام</a>
-        <a href="https://github.com/your-username" target="_blank" rel="noopener" class="btn btn-secondary">گیت‌هاب</a>
+      <div class="section-header">
+        <div class="section-eyebrow">HOW I CREATE VALUE</div>
+        <h2 class="section-title">حوزه‌های تمرکز و نحوه اثرگذاری</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="feature-card">
+          <div>
+            <h3>بازاریابی محصول و ورود به بازار (GTM & Positioning)</h3>
+            <p>تدوین جایگاه‌یابی محصول، تحلیل رقبا، استراتژی پذیرش فیچرها (Feature Adoption) و هم‌راستاسازی تیم‌های محصول، بازاریابی و فروش.</p>
+          </div>
+          <div class="tag-cloud">
+            <span class="tag">Product Positioning</span>
+            <span class="tag">Go-to-Market</span>
+            <span class="tag">Feature Adoption</span>
+            <span class="tag">Market Research</span>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <h3>بهینه‌سازی قیف و درگاه‌های درآمدی (Funnel & Revenue)</h3>
+            <p>ریشه‌یابی افت درآمد، تحلیل رفتار کاربر در مسیر خرید، بهینه‌سازی نرخ تبدیل (CRO) و اجرای آزمون‌های ساختارمند A/B.</p>
+          </div>
+          <div class="tag-cloud">
+            <span class="tag">Funnel Optimization</span>
+            <span class="tag">A/B Testing</span>
+            <span class="tag">Root Cause Analysis</span>
+            <span class="tag">Conversion Rate</span>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <h3>مارکتینگ چرخه عمر و بازگشت مشتری (Lifecycle & CRM)</h3>
+            <p>سگمنتیشن رفتاری کاربران، اتوماسیون جریان‌های تعاملی با WebEngage، کمپین‌های RFM و کاهش خروج مشتریان (Churn Prevention).</p>
+          </div>
+          <div class="tag-cloud">
+            <span class="tag">WebEngage</span>
+            <span class="tag">RFM Segmentation</span>
+            <span class="tag">Retention</span>
+            <span class="tag">Behavioral Triggers</span>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <h3>تحلیل پیشرفته داده و دشبوردهای اجرایی (Analytics & BI)</h3>
+            <p>طراحی چارچوب متریک‌ها (RMA)، تحلیل مسیر کاربر، داده‌کاوی رویدادها با SQL/ClickHouse و بصری‌سازی دشبوردها در Metabase.</p>
+          </div>
+          <div class="tag-cloud">
+            <span class="tag">ClickHouse</span>
+            <span class="tag">T-SQL</span>
+            <span class="tag">Metabase</span>
+            <span class="tag">PostHog / GA4</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- بخش سوم: موتور شبیه‌ساز رشد و ROI -->
+    <section>
+      <div class="section-header">
+        <div class="section-eyebrow">INTERACTIVE MODEL</div>
+        <h2 class="section-title">شبیه‌ساز اهرم‌های رشد و اثر مرکب ROI</h2>
+      </div>
+
+      <div class="simulator-card">
+        <p style="color: var(--text-sub); font-size: 0.95rem; margin-bottom: 1.5rem;">
+          اهرم‌های کلیدی رشد را تغییر دهید تا ببینید چگونه بهبودهای کوچک در کانورژن و ریتنشن، خروجی درآمدی سیستم را به شکل تصاعدی جابه‌جا می‌کنند:
+        </p>
+
+        <div class="sim-grid">
+          <div>
+            <div class="slider-box">
+              <div class="slider-header">
+                <span class="slider-title">کاربران فعال ماهانه (MAU)</span>
+                <span class="slider-num" id="val-mau">50,000</span>
+              </div>
+              <input type="range" id="input-mau" min="5000" max="250000" step="5000" value="50000">
+            </div>
+
+            <div class="slider-box">
+              <div class="slider-header">
+                <span class="slider-title">نرخ تبدیل قیف خرید (Conversion Rate)</span>
+                <span class="slider-num" id="val-cvr">2.8%</span>
+              </div>
+              <input type="range" id="input-cvr" min="0.5" max="10.0" step="0.1" value="2.8">
+            </div>
+
+            <div class="slider-box">
+              <div class="slider-header">
+                <span class="slider-title">میانگین ارزش سفارش (AOV به هزار تومان)</span>
+                <span class="slider-num" id="val-aov">450</span>
+              </div>
+              <input type="range" id="input-aov" min="50" max="2000" step="25" value="450">
+            </div>
+
+            <div class="slider-box">
+              <div class="slider-header">
+                <span class="slider-title">نرخ بازگشت ماهانه کاربر (Retention Rate)</span>
+                <span class="slider-num" id="val-ret">35%</span>
+              </div>
+              <input type="range" id="input-ret" min="10" max="80" step="1" value="35">
+            </div>
+          </div>
+
+          <div class="sim-result-box">
+            <div>
+              <div class="res-metric-label">تخمین درآمد ماهانه (MRR)</div>
+              <div class="res-metric-value" id="res-mrr">۶۳۰ م ت</div>
+            </div>
+            <div style="border-top: 1px solid var(--border); padding-top: 1rem;">
+              <div class="res-metric-label">ارزش انباشته ۶ ماهه با اثر ریتنشن</div>
+              <div class="res-sub-value" id="res-clv">۴.۲ میلیارد ت</div>
+            </div>
+            <a href="#contact-section" class="btn btn-secondary" style="margin-top: 0.5rem; font-size: 0.88rem;">
+              طراحی استراتژی اختصاصی برای محصول شما ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- بخش چهارم: سوابق و تجارب با دکمه Load More -->
+    <section>
+      <div class="section-header">
+        <div class="section-eyebrow">TRACK RECORD</div>
+        <h2 class="section-title">سوابق حرفه‌ای و پروژه‌ها</h2>
+      </div>
+
+      <div class="experience-list">
+        
+        <!-- تجربه ۱ -->
+        <div class="exp-card">
+          <div class="exp-top">
+            <span class="exp-role">مدیر بازاریابی محصول (تیم رشد)</span>
+            <span class="exp-company">مستربلیط (MrBilit)</span>
+            <span class="exp-date">خرداد ۱۴۰۳ — اکنون</span>
+          </div>
+          <ul class="exp-achievements">
+            <li>هدایت پروژه‌های GTM ورتیکال هتل و افزایش سهم رزرو آفلاین از ۱۸.۲۶٪ به ۳۰.۶۶٪ (+۶۷٪).</li>
+            <li>طراحی کمپین‌های بهینه‌سازی نرخ تبدیل با رشد ۶۰ درصدی رزروها و رشد ۲۰۷ درصدی درآمد در دوره ۲۸ روزه.</li>
+            <li>ریشه‌یابی و جبران افت ۵۰ درصدی درآمد با تحلیل Fishbone و تست‌های ساختارمند A/B.</li>
+            <li>پیاده‌سازی متدولوژی اتوماسیون سفر کاربر و ردیابی رویدادها در WebEngage با دقت ۹۹٪.</li>
+          </ul>
+        </div>
+
+        <!-- تجربه ۲ -->
+        <div class="exp-card">
+          <div class="exp-top">
+            <span class="exp-role">توسعه‌دهنده کسب‌وکار (تیم استراتژی)</span>
+            <span class="exp-company">مستربلیط (MrBilit)</span>
+            <span class="exp-date">اسفند ۱۴۰۱ — خرداد ۱۴۰۳</span>
+          </div>
+          <ul class="exp-achievements">
+            <li>شناسایی و اجرای فرصت‌های توسعه بازاری B2C و افزایش نفوذ در بازارهای محلی.</li>
+            <li>طراحی داشبوردهای نظارتی مدیران ارشد با پیاده‌سازی بیش از ۵۰ شاخص عملکردی (چارچوب RMA).</li>
+            <li>استقرار شاخص خالص مروجان (NPS) به عنوان شاخص کلیدی جهت بهبود ۳۰ درصدی رضایت مشتریان.</li>
+          </ul>
+        </div>
+
+        <!-- تجارب تکمیلی (بازشونده با Load More) -->
+        <div class="hidden-exp" id="hidden-experiences">
+          <div class="experience-list" style="gap: 1.25rem;">
+            
+            <div class="exp-card">
+              <div class="exp-top">
+                <span class="exp-role">مدیر بازاریابی</span>
+                <span class="exp-company">سالوا (Salva - FMCG)</span>
+                <span class="exp-date">دی ۱۴۰۰ — اسفند ۱۴۰۱</span>
+              </div>
+              <ul class="exp-achievements">
+                <li>دستیابی به رشد ۵ برابری درآمد در هاب تهران و ۱.۵ برابری در هاب اصفهان با استراتژی‌های رشد منطقه‌ای.</li>
+                <li>پیاده‌سازی کمپین‌های بازگشت مشتری بر پایه تحلیل RFM و افزایش ۲۵ درصدی نرخ حفظ کاربر (Retention).</li>
+              </ul>
+            </div>
+
+            <div class="exp-card">
+              <div class="exp-top">
+                <span class="exp-role">مدیر رشد و بازاریابی</span>
+                <span class="exp-company">همکاره و فیترفیکس (Hamkare & FitterFix)</span>
+                <span class="exp-date">بهمن ۱۳۹۷ — اسفند ۱۴۰۰</span>
+              </div>
+              <ul class="exp-achievements">
+                <li>همکاره: ری‌برندینگ پلتفرم و اجرای استراتژی GTM با افزایش رزروهای روزانه از ۱ به ۱۰ رزرو.</li>
+                <li>فیترفیکس (VOD): هدایت استراتژی سئو و ارگانیک با دستیابی به بیش از ۳,۵۰۰ بازدید روزانه و توسعه شبکه‌های همکار (Affiliate).</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="load-more-btn-wrap">
+          <button class="btn btn-secondary" id="load-more-btn" onclick="toggleExperiences()">
+            مشاهده سایر سوابق شغلی ↓
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- بخش پنجم: اطلاعات تماس و فرم ارتباط مستقیم -->
+    <section id="contact-section">
+      <div class="section-header">
+        <div class="section-eyebrow">LET'S CONNECT</div>
+        <h2 class="section-title">شروع گفت‌وگو و ارتباط کاری</h2>
+      </div>
+
+      <div class="contact-container">
+        
+        <!-- جعبه اطلاعات مستقیم دسترسی -->
+        <div class="info-box">
+          <div>
+            <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;">اطلاعات تماس مستقیم</h3>
+            <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.75rem;">
+              اگر درباره یک چالش رشد، پروژه مقیاس‌پذیری یا مشاوره نیاز به گپ و گفت دارید:
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+              <div class="contact-channel">
+                <span>شماره تماس و تلگرام</span>
+                <a href="tel:+989940834794" dir="ltr" style="text-align: right;">+98 994 083 4794</a>
+              </div>
+              <div class="contact-channel">
+                <span>ایمیل کاری</span>
+                <a href="mailto:Ghassemi.Taha.96@gmail.com">Ghassemi.Taha.96@gmail.com</a>
+              </div>
+              <div class="contact-channel">
+                <span>پروفایل حرفه‌ای</span>
+                <a href="https://linkedin.com/in/taha-ghasemi" target="_blank" rel="noopener">linkedin.com/in/taha-ghasemi ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.82rem; color: var(--text-sub); border-top: 1px solid var(--border); padding-top: 1rem;">
+            موقعیت فعلی: تهران / ایران
+          </div>
+        </div>
+
+        <!-- فرم ارسال پیام و هماهنگی جلسه -->
+        <div class="form-box">
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">هماهنگی گفت‌وگو</h3>
+          <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 1.5rem;">
+            شماره و موضوع مدنظرتان را ثبت کنید تا در کوتاه‌ترین زمان پاسخ دهم:
+          </p>
+
+          <form id="lead-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="contact-phone">شماره تماس یا آیدی تلگرام *</label>
+              <input type="text" id="contact-phone" class="form-control" placeholder="مثال: ۰۹۱۲۳۴۵۶۷۸۹ یا taha_gh@" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-name">نام شما یا نام شرکت / پروژه</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="مثال: علیرضا - استارتاپ گردشگری">
+            </div>
+
+            <div class="form-group">
+              <label for="contact-desc">موضوع گفت‌وگو یا نیازمندی شما *</label>
+              <textarea id="contact-desc" class="form-control" placeholder="مثال: بازبینی قیف فروش، تدوین کمپین‌های بازگشت کاربر، مشاوره تیم رشد..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              ارسال درخواست جلسه
+            </button>
+
+            <div class="form-success-msg" id="form-success">
+              ✓ اطلاعات شما با موفقیت ثبت شد. به‌زودی با شما تماس می‌گیرم.
+            </div>
+          </form>
+        </div>
+
       </div>
     </section>
 
     <footer>
-      <p>© ۱۴۰۵ — طراحی شده به عنوان یک وب‌سایت تک‌صفحه‌ای سریع و بدون افزونه</p>
+      طراحی شده برای وب شخصی طاها قاسمی | پاییز ۱۴۰۵ — Vazirmatn Typography
     </footer>
+
   </div>
 
+  <script>
+    // منطق شبیه‌ساز رشد و ROI
+    const inputMau = document.getElementById('input-mau');
+    const inputCvr = document.getElementById('input-cvr');
+    const inputAov = document.getElementById('input-aov');
+    const inputRet = document.getElementById('input-ret');
+
+    const valMau = document.getElementById('val-mau');
+    const valCvr = document.getElementById('val-cvr');
+    const valAov = document.getElementById('val-aov');
+    const valRet = document.getElementById('val-ret');
+
+    const resMrr = document.getElementById('res-mrr');
+    const resClv = document.getElementById('res-clv');
+
+    function updateSimulator() {
+      const mau = parseInt(inputMau.value);
+      const cvr = parseFloat(inputCvr.value);
+      const aov = parseInt(inputAov.value) * 1000;
+      const ret = parseInt(inputRet.value) / 100;
+
+      valMau.textContent = mau.toLocaleString('fa-IR');
+      valCvr.textContent = cvr.toLocaleString('fa-IR') + '٪';
+      valAov.textContent = (aov / 1000).toLocaleString('fa-IR');
+      valRet.textContent = Math.round(ret * 100).toLocaleString('fa-IR') + '٪';
+
+      // محاسبه درآمد ماهانه (MRR)
+      const buyers = mau * (cvr / 100);
+      const mrr = buyers * aov;
+
+      // محاسبه اثر مرکب ۶ ماهه با ریتنشن
+      let total6M = 0;
+      let activeBuyers = buyers;
+      for (let i = 0; i < 6; i++) {
+        total6M += activeBuyers * aov;
+        activeBuyers = (activeBuyers * ret) + (buyers * 0.85);
+      }
+
+      // فرمت کردن خروجی‌ها به میلیارد و میلیون
+      function formatMoney(amount) {
+        if (amount >= 1e9) {
+          return (amount / 1e9).toFixed(1).replace('.', ',') + ' میلیارد ت';
+        }
+        return Math.round(amount / 1e6).toLocaleString('fa-IR') + ' م ت';
+      }
+
+      resMrr.textContent = formatMoney(mrr);
+      resClv.textContent = formatMoney(total6M);
+    }
+
+    [inputMau, inputCvr, inputAov, inputRet].forEach(input => {
+      input.addEventListener('input', updateSimulator);
+    });
+    updateSimulator();
+
+    // دکمه بازشونده Load More برای تجارب
+    function toggleExperiences() {
+      const hiddenExp = document.getElementById('hidden-experiences');
+      const btn = document.getElementById('load-more-btn');
+
+      if (hiddenExp.classList.contains('active')) {
+        hiddenExp.classList.remove('active');
+        btn.textContent = 'مشاهده سایر سوابق شغلی ↓';
+      } else {
+        hiddenExp.classList.add('active');
+        btn.textContent = 'بستن سوابق شغلی ↑';
+      }
+    }
+
+    // ارسال فرم هماهنگی تماس
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const successBox = document.getElementById('form-success');
+      successBox.style.display = 'block';
+      e.target.reset();
+      setTimeout(() => {
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    }
+  </script>
 </body>
 </html>
