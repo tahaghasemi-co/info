@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>طاها قاسمی | Product Marketing & Growth</title>
+  <title>Taha Ghasemi | Product Marketing & Growth</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #090d16;
@@ -29,7 +29,14 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html[dir="rtl"] * {
       font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif !important;
+    }
+
+    html[dir="ltr"] * {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     }
 
     body {
@@ -72,6 +79,16 @@
       z-index: 1;
     }
 
+    /* نوار بالا و سوئیچر زبان */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
     .badge-status {
       display: inline-flex;
       align-items: center;
@@ -83,7 +100,6 @@
       font-size: 0.82rem;
       color: var(--green);
       font-weight: 600;
-      margin-bottom: 2rem;
     }
 
     .pulse-dot {
@@ -100,7 +116,33 @@
       50% { opacity: 0.3; }
     }
 
-    /* بخش اول: هیرو و آمار */
+    .lang-switcher {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-sub);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #090d16;
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.4);
+    }
+
+    /* بخش اول: هیرو */
     .hero-section {
       margin-bottom: 3.5rem;
     }
@@ -109,7 +151,7 @@
       color: var(--orange);
       font-size: 0.95rem;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 0.75rem;
     }
@@ -227,7 +269,7 @@
       font-size: 0.82rem;
       font-weight: 800;
       color: var(--accent);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 0.4rem;
     }
@@ -297,7 +339,7 @@
       color: var(--text-sub);
     }
 
-    /* بخش سوم: شبیه‌ساز رشد و ROI */
+    /* بخش سوم: شبیه‌ساز رشد */
     .simulator-card {
       background: linear-gradient(145deg, rgba(17, 24, 39, 0.85) 0%, rgba(30, 41, 59, 0.6) 100%);
       border: 1px solid var(--border);
@@ -389,7 +431,7 @@
       color: var(--purple);
     }
 
-    /* بخش چهارم: تجارب و Load More */
+    /* بخش چهارم: سوابق کاری */
     .experience-list {
       display: flex;
       flex-direction: column;
@@ -448,16 +490,32 @@
 
     .exp-achievements li {
       position: relative;
-      padding-right: 1.35rem;
       font-size: 0.92rem;
       color: var(--text-sub);
       line-height: 1.65;
     }
 
-    .exp-achievements li::before {
+    html[dir="rtl"] .exp-achievements li {
+      padding-right: 1.35rem;
+    }
+
+    html[dir="rtl"] .exp-achievements li::before {
       content: "✦";
       position: absolute;
       right: 0;
+      top: 0;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    html[dir="ltr"] .exp-achievements li {
+      padding-left: 1.35rem;
+    }
+
+    html[dir="ltr"] .exp-achievements li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
       top: 0;
       color: var(--accent);
       font-size: 0.85rem;
@@ -481,7 +539,7 @@
       margin-top: 1.5rem;
     }
 
-    /* بخش پنجم: اطلاعات تماس و فرم درخواست */
+    /* بخش پنجم: ارتباط */
     .contact-container {
       display: grid;
       grid-template-columns: 1fr;
@@ -598,26 +656,33 @@
 
   <div class="container">
     
-    <!-- وضعیت فعالیت -->
-    <div class="badge-status">
-      <span class="pulse-dot"></span>
-      <span>در دسترس برای مشاوره رشد، تحلیل محصول و همکاری‌های استراتژیک</span>
+    <!-- نوار بالا: وضعیت + سوئیچر زبان -->
+    <div class="top-bar">
+      <div class="badge-status">
+        <span class="pulse-dot"></span>
+        <span id="txt-badge">در دسترس برای مشاوره رشد، تحلیل محصول و همکاری‌های استراتژیک</span>
+      </div>
+
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btn-fa" onclick="setLanguage('fa')">فارسی</button>
+        <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">English</button>
+      </div>
     </div>
 
-    <!-- بخش اول: هیرو و معرفی -->
+    <!-- بخش اول: هیرو و آمار کلیدی -->
     <section class="hero-section">
-      <div class="hero-eyebrow">Product Marketing & Growth</div>
-      <h1 class="hero-title">
+      <div class="hero-eyebrow" id="txt-eyebrow">Product Marketing & Growth</div>
+      <h1 class="hero-title" id="txt-title">
         من عاشق مسائلی هستم که هنوز <span>مبهم و حل‌نشده‌اند.</span>
       </h1>
-      <p class="hero-lead">
+      <p class="hero-lead" id="txt-lead">
         تخصص من در اتصال <strong>استراتژی بازاریابی (GTM)</strong>، <strong>تحلیل رفتار کاربر</strong> و <strong>اقتصاد کسب‌وکار</strong> است؛ به‌خصوص زمانی که سؤالات تجاری هنوز شفاف نیستند و باید به یک سیستم اندازه‌پذیر و مقیاس‌پذیر تبدیل شوند.
       </p>
 
       <div class="cta-group">
-        <a href="#contact-section" class="btn btn-primary">درخواست گفت‌وگو و جلسه</a>
+        <a href="#contact-section" class="btn btn-primary" id="txt-cta-main">درخواست گفت‌وگو و جلسه</a>
         <a href="Taha Ghasemi.pdf" download class="btn btn-secondary">
-          <span>دانلود رزومه (PDF)</span>
+          <span id="txt-cta-resume">دانلود رزومه (PDF)</span>
           <span style="font-size: 0.8rem;">↓</span>
         </a>
       </div>
@@ -625,36 +690,36 @@
       <!-- نوار شاخص‌های کلیدی -->
       <div class="metrics-bar">
         <div class="metric-item">
-          <div class="metric-value">۲۰۷٪+</div>
-          <div class="metric-label">رشد درآمد با بهینه‌سازی قیف</div>
+          <div class="metric-value" id="m1-val">۲۰۷٪+</div>
+          <div class="metric-label" id="m1-lbl">رشد درآمد با بهینه‌سازی قیف</div>
         </div>
         <div class="metric-item">
-          <div class="metric-value">۶۷٪+</div>
-          <div class="metric-label">رشد سهم بازار ورتیکال هتل</div>
+          <div class="metric-value" id="m2-val">۶۷٪+</div>
+          <div class="metric-label" id="m2-lbl">رشد سهم بازار ورتیکال هتل</div>
         </div>
         <div class="metric-item">
-          <div class="metric-value">۵۰+</div>
-          <div class="metric-label">شاخص عملکردی و دشبورد طراحی‌شده</div>
+          <div class="metric-value" id="m3-val">۵۰+</div>
+          <div class="metric-label" id="m3-lbl">شاخص عملکردی و دشبورد طراحی‌شده</div>
         </div>
         <div class="metric-item">
-          <div class="metric-value">۵+</div>
-          <div class="metric-label">سال سابقه هدایت رشد مبتنی بر دیتا</div>
+          <div class="metric-value" id="m4-val">۵+</div>
+          <div class="metric-label" id="m4-lbl">سال سابقه هدایت رشد مبتنی بر دیتا</div>
         </div>
       </div>
     </section>
 
-    <!-- بخش دوم: WHAT I DO (حوزه‌های ارزش‌آفرینی) -->
+    <!-- بخش دوم: WHAT I DO -->
     <section>
       <div class="section-header">
-        <div class="section-eyebrow">HOW I CREATE VALUE</div>
-        <h2 class="section-title">حوزه‌های تمرکز و نحوه اثرگذاری</h2>
+        <div class="section-eyebrow" id="txt-w-eye">HOW I CREATE VALUE</div>
+        <h2 class="section-title" id="txt-w-title">حوزه‌های تمرکز و نحوه اثرگذاری</h2>
       </div>
 
       <div class="grid-2">
         <div class="feature-card">
           <div>
-            <h3>بازاریابی محصول و ورود به بازار (GTM & Positioning)</h3>
-            <p>تدوین جایگاه‌یابی محصول، تحلیل رقبا، استراتژی پذیرش فیچرها (Feature Adoption) و هم‌راستاسازی تیم‌های محصول، بازاریابی و فروش.</p>
+            <h3 id="f1-title">بازاریابی محصول و ورود به بازار (GTM & Positioning)</h3>
+            <p id="f1-desc">تدوین جایگاه‌یابی محصول، تحلیل رقبا، استراتژی پذیرش فیچرها (Feature Adoption) و هم‌راستاسازی تیم‌های محصول، بازاریابی و فروش.</p>
           </div>
           <div class="tag-cloud">
             <span class="tag">Product Positioning</span>
@@ -666,8 +731,8 @@
 
         <div class="feature-card">
           <div>
-            <h3>بهینه‌سازی قیف و درگاه‌های درآمدی (Funnel & Revenue)</h3>
-            <p>ریشه‌یابی افت درآمد، تحلیل رفتار کاربر در مسیر خرید، بهینه‌سازی نرخ تبدیل (CRO) و اجرای آزمون‌های ساختارمند A/B.</p>
+            <h3 id="f2-title">بهینه‌سازی قیف و درگاه‌های درآمدی (Funnel & Revenue)</h3>
+            <p id="f2-desc">ریشه‌یابی افت درآمد، تحلیل رفتار کاربر در مسیر خرید، بهینه‌سازی نرخ تبدیل (CRO) و اجرای آزمون‌های ساختارمند A/B.</p>
           </div>
           <div class="tag-cloud">
             <span class="tag">Funnel Optimization</span>
@@ -679,8 +744,8 @@
 
         <div class="feature-card">
           <div>
-            <h3>مارکتینگ چرخه عمر و بازگشت مشتری (Lifecycle & CRM)</h3>
-            <p>سگمنتیشن رفتاری کاربران، اتوماسیون جریان‌های تعاملی با WebEngage، کمپین‌های RFM و کاهش خروج مشتریان (Churn Prevention).</p>
+            <h3 id="f3-title">مارکتینگ چرخه عمر و بازگشت مشتری (Lifecycle & CRM)</h3>
+            <p id="f3-desc">سگمنتیشن رفتاری کاربران، اتوماسیون جریان‌های تعاملی با WebEngage، کمپین‌های RFM و کاهش خروج مشتریان (Churn Prevention).</p>
           </div>
           <div class="tag-cloud">
             <span class="tag">WebEngage</span>
@@ -692,8 +757,8 @@
 
         <div class="feature-card">
           <div>
-            <h3>تحلیل پیشرفته داده و دشبوردهای اجرایی (Analytics & BI)</h3>
-            <p>طراحی چارچوب متریک‌ها (RMA)، تحلیل مسیر کاربر، داده‌کاوی رویدادها با SQL/ClickHouse و بصری‌سازی دشبوردها در Metabase.</p>
+            <h3 id="f4-title">تحلیل پیشرفته داده و دشبوردهای اجرایی (Analytics & BI)</h3>
+            <p id="f4-desc">طراحی چارچوب متریک‌ها (RMA)، تحلیل مسیر کاربر، داده‌کاوی رویدادها با SQL/ClickHouse و بصری‌سازی دشبوردها در Metabase.</p>
           </div>
           <div class="tag-cloud">
             <span class="tag">ClickHouse</span>
@@ -705,15 +770,15 @@
       </div>
     </section>
 
-    <!-- بخش سوم: موتور شبیه‌ساز رشد و ROI -->
+    <!-- بخش سوم: شبیه‌ساز رشد و ROI -->
     <section>
       <div class="section-header">
-        <div class="section-eyebrow">INTERACTIVE MODEL</div>
-        <h2 class="section-title">شبیه‌ساز اهرم‌های رشد و اثر مرکب ROI</h2>
+        <div class="section-eyebrow" id="txt-s-eye">INTERACTIVE MODEL</div>
+        <h2 class="section-title" id="txt-s-title">شبیه‌ساز اهرم‌های رشد و اثر مرکب ROI</h2>
       </div>
 
       <div class="simulator-card">
-        <p style="color: var(--text-sub); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        <p style="color: var(--text-sub); font-size: 0.95rem; margin-bottom: 1.5rem;" id="txt-s-desc">
           اهرم‌های کلیدی رشد را تغییر دهید تا ببینید چگونه بهبودهای کوچک در کانورژن و ریتنشن، خروجی درآمدی سیستم را به شکل تصاعدی جابه‌جا می‌کنند:
         </p>
 
@@ -721,7 +786,7 @@
           <div>
             <div class="slider-box">
               <div class="slider-header">
-                <span class="slider-title">کاربران فعال ماهانه (MAU)</span>
+                <span class="slider-title" id="s1-lbl">کاربران فعال ماهانه (MAU)</span>
                 <span class="slider-num" id="val-mau">50,000</span>
               </div>
               <input type="range" id="input-mau" min="5000" max="250000" step="5000" value="50000">
@@ -729,7 +794,7 @@
 
             <div class="slider-box">
               <div class="slider-header">
-                <span class="slider-title">نرخ تبدیل قیف خرید (Conversion Rate)</span>
+                <span class="slider-title" id="s2-lbl">نرخ تبدیل قیف خرید (Conversion Rate)</span>
                 <span class="slider-num" id="val-cvr">2.8%</span>
               </div>
               <input type="range" id="input-cvr" min="0.5" max="10.0" step="0.1" value="2.8">
@@ -737,7 +802,7 @@
 
             <div class="slider-box">
               <div class="slider-header">
-                <span class="slider-title">میانگین ارزش سفارش (AOV به هزار تومان)</span>
+                <span class="slider-title" id="s3-lbl">میانگین ارزش سفارش (AOV)</span>
                 <span class="slider-num" id="val-aov">450</span>
               </div>
               <input type="range" id="input-aov" min="50" max="2000" step="25" value="450">
@@ -745,7 +810,7 @@
 
             <div class="slider-box">
               <div class="slider-header">
-                <span class="slider-title">نرخ بازگشت ماهانه کاربر (Retention Rate)</span>
+                <span class="slider-title" id="s4-lbl">نرخ بازگشت ماهانه کاربر (Retention Rate)</span>
                 <span class="slider-num" id="val-ret">35%</span>
               </div>
               <input type="range" id="input-ret" min="10" max="80" step="1" value="35">
@@ -754,14 +819,14 @@
 
           <div class="sim-result-box">
             <div>
-              <div class="res-metric-label">تخمین درآمد ماهانه (MRR)</div>
+              <div class="res-metric-label" id="res-mrr-lbl">تخمین درآمد ماهانه (MRR)</div>
               <div class="res-metric-value" id="res-mrr">۶۳۰ م ت</div>
             </div>
             <div style="border-top: 1px solid var(--border); padding-top: 1rem;">
-              <div class="res-metric-label">ارزش انباشته ۶ ماهه با اثر ریتنشن</div>
+              <div class="res-metric-label" id="res-clv-lbl">ارزش انباشته ۶ ماهه با اثر ریتنشن</div>
               <div class="res-sub-value" id="res-clv">۴.۲ میلیارد ت</div>
             </div>
-            <a href="#contact-section" class="btn btn-secondary" style="margin-top: 0.5rem; font-size: 0.88rem;">
+            <a href="#contact-section" class="btn btn-secondary" style="margin-top: 0.5rem; font-size: 0.88rem;" id="res-cta">
               طراحی استراتژی اختصاصی برای محصول شما ↗
             </a>
           </div>
@@ -769,11 +834,11 @@
       </div>
     </section>
 
-    <!-- بخش چهارم: سوابق و تجارب با دکمه Load More -->
+    <!-- بخش چهارم: سوابق شغلی و تجارب -->
     <section>
       <div class="section-header">
-        <div class="section-eyebrow">TRACK RECORD</div>
-        <h2 class="section-title">سوابق حرفه‌ای و پروژه‌ها</h2>
+        <div class="section-eyebrow" id="txt-e-eye">TRACK RECORD</div>
+        <h2 class="section-title" id="txt-e-title">سوابق حرفه‌ای و پروژه‌ها</h2>
       </div>
 
       <div class="experience-list">
@@ -781,11 +846,11 @@
         <!-- تجربه ۱ -->
         <div class="exp-card">
           <div class="exp-top">
-            <span class="exp-role">مدیر بازاریابی محصول (تیم رشد)</span>
-            <span class="exp-company">مستربلیط (MrBilit)</span>
-            <span class="exp-date">خرداد ۱۴۰۳ — اکنون</span>
+            <span class="exp-role" id="e1-role">مدیر بازاریابی محصول (تیم رشد)</span>
+            <span class="exp-company">MrBilit (OTA)</span>
+            <span class="exp-date" id="e1-date">خرداد ۱۴۰۳ — اکنون</span>
           </div>
-          <ul class="exp-achievements">
+          <ul class="exp-achievements" id="e1-achievements">
             <li>هدایت پروژه‌های GTM ورتیکال هتل و افزایش سهم رزرو آفلاین از ۱۸.۲۶٪ به ۳۰.۶۶٪ (+۶۷٪).</li>
             <li>طراحی کمپین‌های بهینه‌سازی نرخ تبدیل با رشد ۶۰ درصدی رزروها و رشد ۲۰۷ درصدی درآمد در دوره ۲۸ روزه.</li>
             <li>ریشه‌یابی و جبران افت ۵۰ درصدی درآمد با تحلیل Fishbone و تست‌های ساختارمند A/B.</li>
@@ -796,28 +861,28 @@
         <!-- تجربه ۲ -->
         <div class="exp-card">
           <div class="exp-top">
-            <span class="exp-role">توسعه‌دهنده کسب‌وکار (تیم استراتژی)</span>
-            <span class="exp-company">مستربلیط (MrBilit)</span>
-            <span class="exp-date">اسفند ۱۴۰۱ — خرداد ۱۴۰۳</span>
+            <span class="exp-role" id="e2-role">توسعه‌دهنده کسب‌وکار (تیم استراتژی)</span>
+            <span class="exp-company">MrBilit (OTA)</span>
+            <span class="exp-date" id="e2-date">اسفند ۱۴۰۱ — خرداد ۱۴۰۳</span>
           </div>
-          <ul class="exp-achievements">
+          <ul class="exp-achievements" id="e2-achievements">
             <li>شناسایی و اجرای فرصت‌های توسعه بازاری B2C و افزایش نفوذ در بازارهای محلی.</li>
             <li>طراحی داشبوردهای نظارتی مدیران ارشد با پیاده‌سازی بیش از ۵۰ شاخص عملکردی (چارچوب RMA).</li>
             <li>استقرار شاخص خالص مروجان (NPS) به عنوان شاخص کلیدی جهت بهبود ۳۰ درصدی رضایت مشتریان.</li>
           </ul>
         </div>
 
-        <!-- تجارب تکمیلی (بازشونده با Load More) -->
+        <!-- تجارب تکمیلی -->
         <div class="hidden-exp" id="hidden-experiences">
           <div class="experience-list" style="gap: 1.25rem;">
             
             <div class="exp-card">
               <div class="exp-top">
-                <span class="exp-role">مدیر بازاریابی</span>
-                <span class="exp-company">سالوا (Salva - FMCG)</span>
-                <span class="exp-date">دی ۱۴۰۰ — اسفند ۱۴۰۱</span>
+                <span class="exp-role" id="e3-role">مدیر بازاریابی</span>
+                <span class="exp-company">Salva (FMCG)</span>
+                <span class="exp-date" id="e3-date">دی ۱۴۰۰ — اسفند ۱۴۰۱</span>
               </div>
-              <ul class="exp-achievements">
+              <ul class="exp-achievements" id="e3-achievements">
                 <li>دستیابی به رشد ۵ برابری درآمد در هاب تهران و ۱.۵ برابری در هاب اصفهان با استراتژی‌های رشد منطقه‌ای.</li>
                 <li>پیاده‌سازی کمپین‌های بازگشت مشتری بر پایه تحلیل RFM و افزایش ۲۵ درصدی نرخ حفظ کاربر (Retention).</li>
               </ul>
@@ -825,11 +890,11 @@
 
             <div class="exp-card">
               <div class="exp-top">
-                <span class="exp-role">مدیر رشد و بازاریابی</span>
-                <span class="exp-company">همکاره و فیترفیکس (Hamkare & FitterFix)</span>
-                <span class="exp-date">بهمن ۱۳۹۷ — اسفند ۱۴۰۰</span>
+                <span class="exp-role" id="e4-role">مدیر رشد و بازاریابی</span>
+                <span class="exp-company">Hamkare & FitterFix</span>
+                <span class="exp-date" id="e4-date">بهمن ۱۳۹۷ — اسفند ۱۴۰۰</span>
               </div>
-              <ul class="exp-achievements">
+              <ul class="exp-achievements" id="e4-achievements">
                 <li>همکاره: ری‌برندینگ پلتفرم و اجرای استراتژی GTM با افزایش رزروهای روزانه از ۱ به ۱۰ رزرو.</li>
                 <li>فیترفیکس (VOD): هدایت استراتژی سئو و ارگانیک با دستیابی به بیش از ۳,۵۰۰ بازدید روزانه و توسعه شبکه‌های همکار (Affiliate).</li>
               </ul>
@@ -847,68 +912,66 @@
       </div>
     </section>
 
-    <!-- بخش پنجم: اطلاعات تماس و فرم ارتباط مستقیم -->
+    <!-- بخش پنجم: اطلاعات تماس و فرم -->
     <section id="contact-section">
       <div class="section-header">
-        <div class="section-eyebrow">LET'S CONNECT</div>
-        <h2 class="section-title">شروع گفت‌وگو و ارتباط کاری</h2>
+        <div class="section-eyebrow" id="txt-c-eye">LET'S CONNECT</div>
+        <h2 class="section-title" id="txt-c-title">شروع گفت‌وگو و ارتباط کاری</h2>
       </div>
 
       <div class="contact-container">
         
-        <!-- جعبه اطلاعات مستقیم دسترسی -->
         <div class="info-box">
           <div>
-            <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;">اطلاعات تماس مستقیم</h3>
-            <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.75rem;">
+            <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;" id="info-title">اطلاعات تماس مستقیم</h3>
+            <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.75rem;" id="info-desc">
               اگر درباره یک چالش رشد، پروژه مقیاس‌پذیری یا مشاوره نیاز به گپ و گفت دارید:
             </p>
 
             <div style="display: flex; flex-direction: column; gap: 1.2rem;">
               <div class="contact-channel">
-                <span>شماره تماس و تلگرام</span>
-                <a href="tel:+989940834794" dir="ltr" style="text-align: right;">+98 994 083 4794</a>
+                <span id="ch1-lbl">شماره تماس و تلگرام</span>
+                <a href="tel:+989940834794" dir="ltr" style="text-align: inherit;">+98 994 083 4794</a>
               </div>
               <div class="contact-channel">
-                <span>ایمیل کاری</span>
+                <span id="ch2-lbl">ایمیل کاری</span>
                 <a href="mailto:Ghassemi.Taha.96@gmail.com">Ghassemi.Taha.96@gmail.com</a>
               </div>
               <div class="contact-channel">
-                <span>پروفایل حرفه‌ای</span>
+                <span id="ch3-lbl">پروفایل حرفه‌ای</span>
                 <a href="https://linkedin.com/in/taha-ghasemi" target="_blank" rel="noopener">linkedin.com/in/taha-ghasemi ↗</a>
               </div>
             </div>
           </div>
 
-          <div style="font-size: 0.82rem; color: var(--text-sub); border-top: 1px solid var(--border); padding-top: 1rem;">
+          <div style="font-size: 0.82rem; color: var(--text-sub); border-top: 1px solid var(--border); padding-top: 1rem;" id="info-loc">
             موقعیت فعلی: تهران / ایران
           </div>
         </div>
 
-        <!-- فرم ارسال پیام و هماهنگی جلسه -->
         <div class="form-box">
-          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">هماهنگی گفت‌وگو</h3>
-          <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;" id="form-title">هماهنگی گفت‌وگو</h3>
+          <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 1.5rem;" id="form-desc">
             شماره و موضوع مدنظرتان را ثبت کنید تا در کوتاه‌ترین زمان پاسخ دهم:
           </p>
 
           <form id="lead-form" onsubmit="handleFormSubmit(event)">
             <div class="form-group">
-              <label for="contact-phone">شماره تماس یا آیدی تلگرام *</label>
-              <input type="text" id="contact-phone" class="form-control" placeholder="مثال: ۰۹۱۲۳۴۵۶۷۸۹ یا taha_gh@" required>
+              <label for="contact-phone" id="f-lbl-phone">شماره تماس یا آیدی تلگرام *</label>
+              <input type="text" id="contact-phone" class="form-control" placeholder="۰۹۱۲۳۴۵۶۷۸۹ یا taha_gh@" required>
             </div>
 
             <div class="form-group">
-              <label for="contact-name">نام شما یا نام شرکت / پروژه</label>
-              <input type="text" id="contact-name" class="form-control" placeholder="مثال: علیرضا - استارتاپ گردشگری">
+              <label for="contact-name" id="f-lbl-name">نام شما یا نام شرکت / پروژه</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="علیرضا - استارتاپ گردشگری">
             </div>
 
             <div class="form-group">
-              <label for="contact-desc">موضوع گفت‌وگو یا نیازمندی شما *</label>
+              <label for="contact-desc" id="f-lbl-desc">موضوع گفت‌وگو یا نیازمندی شما *</label>
               <textarea id="contact-desc" class="form-control" placeholder="مثال: بازبینی قیف فروش، تدوین کمپین‌های بازگشت کاربر، مشاوره تیم رشد..." required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;" id="f-btn-submit">
               ارسال درخواست جلسه
             </button>
 
@@ -921,14 +984,282 @@
       </div>
     </section>
 
-    <footer>
+    <footer id="txt-footer">
       طراحی شده برای وب شخصی طاها قاسمی | پاییز ۱۴۰۵ — Vazirmatn Typography
     </footer>
 
   </div>
 
   <script>
-    // منطق شبیه‌ساز رشد و ROI
+    // دیکشنری دو زبانه کامل
+    const translations = {
+      fa: {
+        dir: 'rtl',
+        badge: 'در دسترس برای مشاوره رشد، تحلیل محصول و همکاری‌های استراتژیک',
+        eyebrow: 'Product Marketing & Growth',
+        title: 'من عاشق مسائلی هستم که هنوز <span>مبهم و حل‌نشده‌اند.</span>',
+        lead: 'تخصص من در اتصال <strong>استراتژی بازاریابی (GTM)</strong>، <strong>تحلیل رفتار کاربر</strong> و <strong>اقتصاد کسب‌وکار</strong> است؛ به‌خصوص زمانی که سؤالات تجاری هنوز شفاف نیستند و باید به یک سیستم اندازه‌پذیر و مقیاس‌پذیر تبدیل شوند.',
+        ctaMain: 'درخواست گفت‌وگو و جلسه',
+        ctaResume: 'دانلود رزومه (PDF)',
+        m1Val: '۲۰۷٪+', m1Lbl: 'رشد درآمد با بهینه‌سازی قیف',
+        m2Val: '۶۷٪+', m2Lbl: 'رشد سهم بازار ورتیکال هتل',
+        m3Val: '۵۰+', m3Lbl: 'شاخص عملکردی و دشبورد طراحی‌شده',
+        m4Val: '۵+', m4Lbl: 'سال سابقه هدایت رشد مبتنی بر دیتا',
+        wEye: 'HOW I CREATE VALUE',
+        wTitle: 'حوزه‌های تمرکز و نحوه اثرگذاری',
+        f1Title: 'بازاریابی محصول و ورود به بازار (GTM & Positioning)',
+        f1Desc: 'تدوین جایگاه‌یابی محصول، تحلیل رقبا، استراتژی پذیرش فیچرها (Feature Adoption) و هم‌راستاسازی تیم‌های محصول، بازاریابی و فروش.',
+        f2Title: 'بهینه‌سازی قیف و درگاه‌های درآمدی (Funnel & Revenue)',
+        f2Desc: 'ریشه‌یابی افت درآمد، تحلیل رفتار کاربر در مسیر خرید، بهینه‌سازی نرخ تبدیل (CRO) و اجرای آزمون‌های ساختارمند A/B.',
+        f3Title: 'مارکتینگ چرخه عمر و بازگشت مشتری (Lifecycle & CRM)',
+        f3Desc: 'سگمنتیشن رفتاری کاربران، اتوماسیون جریان‌های تعاملی با WebEngage، کمپین‌های RFM و کاهش خروج مشتریان (Churn Prevention).',
+        f4Title: 'تحلیل پیشرفته داده و دشبوردهای اجرایی (Analytics & BI)',
+        f4Desc: 'طراحی چارچوب متریک‌ها (RMA)، تحلیل مسیر کاربر، داده‌کاوی رویدادها با SQL/ClickHouse و بصری‌سازی دشبوردها در Metabase.',
+        sEye: 'INTERACTIVE MODEL',
+        sTitle: 'شبیه‌ساز اهرم‌های رشد و اثر مرکب ROI',
+        sDesc: 'اهرم‌های کلیدی رشد را تغییر دهید تا ببینید چگونه بهبودهای کوچک در کانورژن و ریتنشن، خروجی درآمدی سیستم را به شکل تصاعدی جابه‌جا می‌کنند:',
+        s1Lbl: 'کاربران فعال ماهانه (MAU)',
+        s2Lbl: 'نرخ تبدیل قیف خرید (Conversion Rate)',
+        s3Lbl: 'میانگین ارزش سفارش (AOV به هزار تومان)',
+        s4Lbl: 'نرخ بازگشت ماهانه کاربر (Retention Rate)',
+        resMrrLbl: 'تخمین درآمد ماهانه (MRR)',
+        resClvLbl: 'ارزش انباشته ۶ ماهه با اثر ریتنشن',
+        resCta: 'طراحی استراتژی اختصاصی برای محصول شما ↗',
+        eEye: 'TRACK RECORD',
+        eTitle: 'سوابق حرفه‌ای و پروژه‌ها',
+        e1Role: 'مدیر بازاریابی محصول (تیم رشد)', e1Date: 'خرداد ۱۴۰۳ — اکنون',
+        e1Ach: [
+          'هدایت پروژه‌های GTM ورتیکال هتل و افزایش سهم رزرو آفلاین از ۱۸.۲۶٪ به ۳۰.۶۶٪ (+۶۷٪).',
+          'طراحی کمپین‌های بهینه‌سازی نرخ تبدیل با رشد ۶۰ درصدی رزروها و رشد ۲۰۷ درصدی درآمد در دوره ۲۸ روزه.',
+          'ریشه‌یابی و جبران افت ۵۰ درصدی درآمد با تحلیل Fishbone و تست‌های ساختارمند A/B.',
+          'پیاده‌سازی متدولوژی اتوماسیون سفر کاربر و ردیابی رویدادها در WebEngage با دقت ۹۹٪.'
+        ],
+        e2Role: 'توسعه‌دهنده کسب‌وکار (تیم استراتژی)', e2Date: 'اسفند ۱۴۰۱ — خرداد ۱۴۰۳',
+        e2Ach: [
+          'شناسایی و اجرای فرصت‌های توسعه بازاری B2C و افزایش نفوذ در بازارهای محلی.',
+          'طراحی داشبوردهای نظارتی مدیران ارشد با پیاده‌سازی بیش از ۵۰ شاخص عملکردی (چارچوب RMA).',
+          'استقرار شاخص خالص مروجان (NPS) به عنوان شاخص کلیدی جهت بهبود ۳۰ درصدی رضایت مشتریان.'
+        ],
+        e3Role: 'مدیر بازاریابی', e3Date: 'دی ۱۴۰۰ — اسفند ۱۴۰۱',
+        e3Ach: [
+          'دستیابی به رشد ۵ برابری درآمد در هاب تهران و ۱.۵ برابری در هاب اصفهان با استراتژی‌های رشد منطقه‌ای.',
+          'پیاده‌سازی کمپین‌های بازگشت مشتری بر پایه تحلیل RFM و افزایش ۲۵ درصدی نرخ حفظ کاربر (Retention).'
+        ],
+        e4Role: 'مدیر رشد و بازاریابی', e4Date: 'بهمن ۱۳۹۷ — اسفند ۱۴۰۰',
+        e4Ach: [
+          'همکاره: ری‌برندینگ پلتفرم و اجرای استراتژی GTM با افزایش رزروهای روزانه از ۱ به ۱۰ رزرو.',
+          'فیترفیکس (VOD): هدایت استراتژی سئو و ارگانیک با دستیابی به بیش از ۳,۵۰۰ بازدید روزانه و توسعه شبکه‌های همکار (Affiliate).'
+        ],
+        loadMoreOpen: 'مشاهده سایر سوابق شغلی ↓',
+        loadMoreClose: 'بستن سوابق شغلی ↑',
+        cEye: 'LET\'S CONNECT',
+        cTitle: 'شروع گفت‌وگو و ارتباط کاری',
+        infoTitle: 'اطلاعات تماس مستقیم',
+        infoDesc: 'اگر درباره یک چالش رشد، پروژه مقیاس‌پذیری یا مشاوره نیاز به گپ و گفت دارید:',
+        ch1Lbl: 'شماره تماس و تلگرام',
+        ch2Lbl: 'ایمیل کاری',
+        ch3Lbl: 'پروفایل حرفه‌ای',
+        infoLoc: 'موقعیت فعلی: تهران / ایران',
+        formTitle: 'هماهنگی گفت‌وگو',
+        formDesc: 'شماره و موضوع مدنظرتان را ثبت کنید تا در کوتاه‌ترین زمان پاسخ دهم:',
+        fLblPhone: 'شماره تماس یا آیدی تلگرام *',
+        fPlhPhone: '۰۹۱۲۳۴۵۶۷۸۹ یا taha_gh@',
+        fLblName: 'نام شما یا نام شرکت / پروژه',
+        fPlhName: 'علیرضا - استارتاپ گردشگری',
+        fLblDesc: 'موضوع گفت‌وگو یا نیازمندی شما *',
+        fPlhDesc: 'مثال: بازبینی قیف فروش، تدوین کمپین‌های بازگشت کاربر، مشاوره تیم رشد...',
+        fBtnSubmit: 'ارسال درخواست جلسه',
+        fSuccess: '✓ اطلاعات شما با موفقیت ثبت شد. به‌زودی با شما تماس می‌گیرم.',
+        footer: 'طراحی شده برای وب شخصی طاها قاسمی | پاییز ۱۴۰۵ — Vazirmatn Typography'
+      },
+      en: {
+        dir: 'ltr',
+        badge: 'Available for Growth Advisory, Product Analytics & Strategic Roles',
+        eyebrow: 'Product Marketing & Growth',
+        title: 'I like problems that are still <span>messy.</span>',
+        lead: 'I work best on challenges that sit between <strong>commercial strategy (GTM)</strong>, <strong>user behavior analytics</strong>, and <strong>business economics</strong> — especially when questions are not yet clear and need to be turned into a measurable, scalable growth engine.',
+        ctaMain: 'Book a Discussion / Meeting',
+        ctaResume: 'Download Resume (PDF)',
+        m1Val: '+207%', m1Lbl: 'Revenue growth via funnel optimization',
+        m2Val: '+67%', m2Lbl: 'Hotel vertical market share expansion',
+        m3Val: '50+', m3Lbl: 'KPIs & executive dashboards built',
+        m4Val: '5+', m4Lbl: 'Years leading data-driven growth',
+        wEye: 'HOW I CREATE VALUE',
+        wTitle: 'Areas of Focus & Expertise',
+        f1Title: 'Product Marketing & Go-to-Market (GTM)',
+        f1Desc: 'Defining positioning, competitive benchmarking, feature adoption frameworks, and cross-functional alignment across Product, BI, and Sales teams.',
+        f2Title: 'Funnel & Conversion Rate Optimization (CRO)',
+        f2Desc: 'Diagnosing revenue drop-offs via fishbone analysis, behavioral event mapping, checkout flow optimization, and structured A/B testing.',
+        f3Title: 'Lifecycle Marketing & User Retention (CRM)',
+        f3Desc: 'Architecting behavioral segmentation, automated user journeys via WebEngage, RFM retention campaigns, and churn mitigation models.',
+        f4Title: 'Advanced Analytics & Executive BI',
+        f4Desc: 'Building full journey measurement frameworks (RMA), event tracking infrastructure, SQL queries on ClickHouse, and executive Metabase dashboards.',
+        sEye: 'INTERACTIVE MODEL',
+        sTitle: 'Growth Levers & Compounding ROI Simulator',
+        sDesc: 'Adjust key growth inputs to see how marginal gains in conversion and retention compound into significant scalable revenue:',
+        s1Lbl: 'Monthly Active Users (MAU)',
+        s2Lbl: 'Funnel Conversion Rate (CVR)',
+        s3Lbl: 'Average Order Value (AOV in $)',
+        s4Lbl: 'Monthly Retention Rate',
+        resMrrLbl: 'Estimated Monthly Revenue (MRR)',
+        resClvLbl: '6-Month Compounded Value with Retention',
+        resCta: 'Design a Custom Growth Engine for Your Product ↗',
+        eEye: 'TRACK RECORD',
+        eTitle: 'Work Experience & Impact',
+        e1Role: 'Product Marketing Manager (Growth Team)', e1Date: 'June 2024 — Present',
+        e1Ach: [
+          'Owned product marketing for Hotel vertical, lifting offline booking share from 18.26% to 30.66% (+67%).',
+          'Engineered conversion optimization experiments increasing 28-day moving-average bookings by 60% and revenue by 207%.',
+          'Diagnosed and recovered a 50% revenue decline using fishbone diagrams, behavioral analytics, and A/B testing.',
+          'Implemented end-to-end event tracking in WebEngage, achieving 99% business event tracking accuracy.'
+        ],
+        e2Role: 'Business Developer (Strategy Team)', e2Date: 'March 2023 — May 2024',
+        e2Ach: [
+          'Identified and executed commercial expansion opportunities to accelerate B2C acquisition and regional penetration.',
+          'Designed executive dashboards tracking 50+ business KPIs using the RMA framework to align business and product performance.',
+          'Deployed Net Promoter Score (NPS) as a North Star metric, boosting overall customer satisfaction by 30%.'
+        ],
+        e3Role: 'Marketing Manager', e3Date: 'Jan 2022 — March 2023',
+        e3Ach: [
+          'Drove 5x revenue growth in Tehran hub and 1.5x in Isfahan hub through hyper-localized growth marketing strategies.',
+          'Built and deployed RFM-based retention campaigns, driving a 25% increase in repeat customer retention.'
+        ],
+        e4Role: 'Marketing & Growth Manager', e4Date: 'Feb 2019 — March 2022',
+        e4Ach: [
+          'Hamkare (E-commerce): Spearheaded rebranding and GTM strategy, scaling daily active reservations from 1 to 10.',
+          'FitterFix (VOD): Led technical SEO and organic acquisition, scaling platform traffic to 3,500+ daily organic visits.'
+        ],
+        loadMoreOpen: 'View Older Experience ↓',
+        loadMoreClose: 'Show Less ↑',
+        cEye: 'LET\'S CONNECT',
+        cTitle: 'Get in Touch & Start a Conversation',
+        infoTitle: 'Direct Contact Details',
+        infoDesc: 'Whether you want to discuss a growth bottleneck, product scaling, or an advisory role:',
+        ch1Lbl: 'Phone & Telegram',
+        ch2Lbl: 'Work Email',
+        ch3Lbl: 'Professional Profile',
+        infoLoc: 'Current Location: Tehran, Iran',
+        formTitle: 'Schedule a Call',
+        formDesc: 'Leave your contact details and message, and I will get back to you promptly:',
+        fLblPhone: 'Phone Number / Telegram Handle *',
+        fPlhPhone: '+98... or @telegram_handle',
+        fLblName: 'Your Name or Company / Startup',
+        fPlhName: 'e.g. Alex - FinTech Startup',
+        fLblDesc: 'Project Goals or Challenge Details *',
+        fPlhDesc: 'e.g., Funnel auditing, CRM automation, product positioning review...',
+        fBtnSubmit: 'Send Meeting Request',
+        fSuccess: '✓ Thank you! Your request has been sent successfully.',
+        footer: 'Crafted for Taha Ghasemi | 2026 — Product Marketing & Growth'
+      }
+    };
+
+    let currentLang = 'fa';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+      document.documentElement.lang = lang;
+      document.documentElement.dir = t.dir;
+
+      // کلیدهای فعال سوئیچر
+      document.getElementById('btn-fa').classList.toggle('active', lang === 'fa');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      // متون اصلی
+      document.getElementById('txt-badge').textContent = t.badge;
+      document.getElementById('txt-eyebrow').textContent = t.eyebrow;
+      document.getElementById('txt-title').innerHTML = t.title;
+      document.getElementById('txt-lead').innerHTML = t.lead;
+      document.getElementById('txt-cta-main').textContent = t.ctaMain;
+      document.getElementById('txt-cta-resume').textContent = t.ctaResume;
+
+      // متریک‌ها
+      document.getElementById('m1-val').textContent = t.m1Val;
+      document.getElementById('m1-lbl').textContent = t.m1Lbl;
+      document.getElementById('m2-val').textContent = t.m2Val;
+      document.getElementById('m2-lbl').textContent = t.m2Lbl;
+      document.getElementById('m3-val').textContent = t.m3Val;
+      document.getElementById('m3-lbl').textContent = t.m3Lbl;
+      document.getElementById('m4-val').textContent = t.m4Val;
+      document.getElementById('m4-lbl').textContent = t.m4Lbl;
+
+      // حوزه‌ها
+      document.getElementById('txt-w-eye').textContent = t.wEye;
+      document.getElementById('txt-w-title').textContent = t.wTitle;
+      document.getElementById('f1-title').textContent = t.f1Title;
+      document.getElementById('f1-desc').textContent = t.f1Desc;
+      document.getElementById('f2-title').textContent = t.f2Title;
+      document.getElementById('f2-desc').textContent = t.f2Desc;
+      document.getElementById('f3-title').textContent = t.f3Title;
+      document.getElementById('f3-desc').textContent = t.f3Desc;
+      document.getElementById('f4-title').textContent = t.f4Title;
+      document.getElementById('f4-desc').textContent = t.f4Desc;
+
+      // شبیه‌ساز
+      document.getElementById('txt-s-eye').textContent = t.sEye;
+      document.getElementById('txt-s-title').textContent = t.sTitle;
+      document.getElementById('txt-s-desc').textContent = t.sDesc;
+      document.getElementById('s1-lbl').textContent = t.s1Lbl;
+      document.getElementById('s2-lbl').textContent = t.s2Lbl;
+      document.getElementById('s3-lbl').textContent = t.s3Lbl;
+      document.getElementById('s4-lbl').textContent = t.s4Lbl;
+      document.getElementById('res-mrr-lbl').textContent = t.resMrrLbl;
+      document.getElementById('res-clv-lbl').textContent = t.resClvLbl;
+      document.getElementById('res-cta').textContent = t.resCta;
+
+      // سوابق کاری
+      document.getElementById('txt-e-eye').textContent = t.eEye;
+      document.getElementById('txt-e-title').textContent = t.eTitle;
+      document.getElementById('e1-role').textContent = t.e1Role;
+      document.getElementById('e1-date').textContent = t.e1Date;
+      renderList('e1-achievements', t.e1Ach);
+
+      document.getElementById('e2-role').textContent = t.e2Role;
+      document.getElementById('e2-date').textContent = t.e2Date;
+      renderList('e2-achievements', t.e2Ach);
+
+      document.getElementById('e3-role').textContent = t.e3Role;
+      document.getElementById('e3-date').textContent = t.e3Date;
+      renderList('e3-achievements', t.e3Ach);
+
+      document.getElementById('e4-role').textContent = t.e4Role;
+      document.getElementById('e4-date').textContent = t.e4Date;
+      renderList('e4-achievements', t.e4Ach);
+
+      const hiddenExp = document.getElementById('hidden-experiences');
+      document.getElementById('load-more-btn').textContent = hiddenExp.classList.contains('active') ? t.loadMoreClose : t.loadMoreOpen;
+
+      // اطلاعات تماس و فرم
+      document.getElementById('txt-c-eye').textContent = t.cEye;
+      document.getElementById('txt-c-title').textContent = t.cTitle;
+      document.getElementById('info-title').textContent = t.infoTitle;
+      document.getElementById('info-desc').textContent = t.infoDesc;
+      document.getElementById('ch1-lbl').textContent = t.ch1Lbl;
+      document.getElementById('ch2-lbl').textContent = t.ch2Lbl;
+      document.getElementById('ch3-lbl').textContent = t.ch3Lbl;
+      document.getElementById('info-loc').textContent = t.infoLoc;
+
+      document.getElementById('form-title').textContent = t.formTitle;
+      document.getElementById('form-desc').textContent = t.formDesc;
+      document.getElementById('f-lbl-phone').textContent = t.fLblPhone;
+      document.getElementById('contact-phone').placeholder = t.fPlhPhone;
+      document.getElementById('f-lbl-name').textContent = t.fLblName;
+      document.getElementById('contact-name').placeholder = t.fPlhName;
+      document.getElementById('f-lbl-desc').textContent = t.fLblDesc;
+      document.getElementById('contact-desc').placeholder = t.fPlhDesc;
+      document.getElementById('f-btn-submit').textContent = t.fBtnSubmit;
+      document.getElementById('form-success').textContent = t.fSuccess;
+      document.getElementById('txt-footer').textContent = t.footer;
+
+      updateSimulator();
+    }
+
+    function renderList(elementId, items) {
+      const el = document.getElementById(elementId);
+      el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    }
+
+    // منطق شبیه‌ساز رشد
     const inputMau = document.getElementById('input-mau');
     const inputCvr = document.getElementById('input-cvr');
     const inputAov = document.getElementById('input-aov');
@@ -945,19 +1276,19 @@
     function updateSimulator() {
       const mau = parseInt(inputMau.value);
       const cvr = parseFloat(inputCvr.value);
-      const aov = parseInt(inputAov.value) * 1000;
       const ret = parseInt(inputRet.value) / 100;
+      const isFa = currentLang === 'fa';
 
-      valMau.textContent = mau.toLocaleString('fa-IR');
-      valCvr.textContent = cvr.toLocaleString('fa-IR') + '٪';
-      valAov.textContent = (aov / 1000).toLocaleString('fa-IR');
-      valRet.textContent = Math.round(ret * 100).toLocaleString('fa-IR') + '٪';
+      const aov = parseInt(inputAov.value) * (isFa ? 1000 : 1);
 
-      // محاسبه درآمد ماهانه (MRR)
+      valMau.textContent = isFa ? mau.toLocaleString('fa-IR') : mau.toLocaleString('en-US');
+      valCvr.textContent = (isFa ? cvr.toLocaleString('fa-IR') : cvr) + '%';
+      valAov.textContent = isFa ? (aov / 1000).toLocaleString('fa-IR') : '$' + aov;
+      valRet.textContent = (isFa ? Math.round(ret * 100).toLocaleString('fa-IR') : Math.round(ret * 100)) + '%';
+
       const buyers = mau * (cvr / 100);
       const mrr = buyers * aov;
 
-      // محاسبه اثر مرکب ۶ ماهه با ریتنشن
       let total6M = 0;
       let activeBuyers = buyers;
       for (let i = 0; i < 6; i++) {
@@ -965,12 +1296,18 @@
         activeBuyers = (activeBuyers * ret) + (buyers * 0.85);
       }
 
-      // فرمت کردن خروجی‌ها به میلیارد و میلیون
       function formatMoney(amount) {
-        if (amount >= 1e9) {
-          return (amount / 1e9).toFixed(1).replace('.', ',') + ' میلیارد ت';
+        if (isFa) {
+          if (amount >= 1e9) {
+            return (amount / 1e9).toFixed(1).replace('.', ',') + ' میلیارد ت';
+          }
+          return Math.round(amount / 1e6).toLocaleString('fa-IR') + ' م ت';
+        } else {
+          if (amount >= 1e6) {
+            return '$' + (amount / 1e6).toFixed(2) + 'M';
+          }
+          return '$' + Math.round(amount / 1e3).toLocaleString('en-US') + 'K';
         }
-        return Math.round(amount / 1e6).toLocaleString('fa-IR') + ' م ت';
       }
 
       resMrr.textContent = formatMoney(mrr);
@@ -980,23 +1317,21 @@
     [inputMau, inputCvr, inputAov, inputRet].forEach(input => {
       input.addEventListener('input', updateSimulator);
     });
-    updateSimulator();
 
-    // دکمه بازشونده Load More برای تجارب
     function toggleExperiences() {
       const hiddenExp = document.getElementById('hidden-experiences');
       const btn = document.getElementById('load-more-btn');
+      const t = translations[currentLang];
 
       if (hiddenExp.classList.contains('active')) {
         hiddenExp.classList.remove('active');
-        btn.textContent = 'مشاهده سایر سوابق شغلی ↓';
+        btn.textContent = t.loadMoreOpen;
       } else {
         hiddenExp.classList.add('active');
-        btn.textContent = 'بستن سوابق شغلی ↑';
+        btn.textContent = t.loadMoreClose;
       }
     }
 
-    // ارسال فرم هماهنگی تماس
     function handleFormSubmit(e) {
       e.preventDefault();
       const successBox = document.getElementById('form-success');
@@ -1006,6 +1341,9 @@
         successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 100);
     }
+
+    // مقداردهی اولیه به زبان فارسی
+    setLanguage('fa');
   </script>
 </body>
 </html>
